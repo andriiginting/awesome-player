@@ -8,27 +8,11 @@
     android:orientation="vertical"
     tools:parentTag="androidx.appcompat.widget.LinearLayoutCompat">
 
-<androidx.appcompat.widget.AppCompatImageView
-        android:id="@+id/ivArtistProfile"
+    <com.google.android.exoplayer2.ui.PlayerView
+        android:id="@+id/playerView"
         android:layout_width="match_parent"
         android:layout_height="300dp"
-        android:src="@color/colorPrimary" />
-
-    <TextView
-        android:id="@+id/tvSongTitle"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:text="Artist"
-        android:textSize="21sp"
-        android:layout_gravity="center"/>
-
-    <TextView
-        android:id="@+id/tvArtistName"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="4dp"
-        android:text="Artist"
-        android:textSize="16sp"
-        android:layout_gravity="center" />
+        app:fastforward_increment="30000"
+        app:rewind_increment="30000"
+        app:show_timeout="10000" />
 </merge>

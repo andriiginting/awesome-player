@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="dataModel"
+            type="com.andriiginting.awesomeplayer.data.AwesomePlayerModel" />
+
+        <variable
+            name="callback"
+            type="com.andriiginting.awesomeplayer.data.AwesomePlayerStates" />
+
+        <variable
+            name="index"
+            type="int" />
+
+
+    </data>
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/parent"
+        android:layout_width="match_parent"
+        android:layout_height="300dp"
+        android:layout_margin="16dp"
+        android:background="#fff"
+        android:weightSum="100"
+        app:cardCornerRadius="16dp"
+        app:cardElevation="@dimen/cardview_default_elevation">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="0.5dp"
+                android:background="#000" />
+
+            <FrameLayout
+                android:id="@+id/media_container"
+                android:layout_width="match_parent"
+                android:layout_height="200dp"
+                android:background="#000"
+                android:scaleType="center">
+
+                <com.google.android.exoplayer2.ui.PlayerView
+                    android:id="@+id/item_video_exoplayer"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    app:item_index="@{index}"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:on_state_change="@{callback}"
+                    app:progressbar="@{progressBar}"
+                    app:resize_mode="fill"
+                    app:thumbnail="@{thumbnail}"
+                    app:video_url="@{dataModel.mediaUrl}" />
+
+                <ImageView
+                    android:id="@+id/thumbnail"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:adjustViewBounds="true"
+                    android:background="#fff"
+                    android:scaleType="centerCrop"
+                    app:thumbnail="@{dataModel.thumbnail}" />
+
+                <ProgressBar
+                    android:id="@+id/progressBar"
+                    style="?android:attr/progressBarStyle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:visibility="gone" />
+            </FrameLayout>
+
+            <TextView
+                android:id="@+id/title"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginLeft="8dp"
+                android:text="@{dataModel.title}"
+                android:textColor="#000"
+                android:textSize="20sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/subTitle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginLeft="8dp"
+                android:padding="10dp"
+                android:text="@{dataModel.description}"
+                android:textColor="#000"
+                android:textSize="15sp" />
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
+</layout>

@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">Awesome Player</string>
+    <string name="media_streaming_url_sample">https://storage.googleapis.com/exoplayer-test-media-0/play.mp3</string>
 </resources>
